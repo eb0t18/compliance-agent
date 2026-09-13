@@ -1,0 +1,36 @@
+AI AGENT ACTIVITY LOGGING — DESIGN NOTE
+Author: ML Platform Team | Last updated: 2026-09-08
+
+CURRENT STATE
+Every invocation of the forms auto-fill agent writes an entry to the
+application's standard logging pipeline (same system used for general
+application logs), capturing: timestamp, user ID, tenant ID, and a
+summary of the suggested field completions.
+
+WHAT THIS COVERS
+- We can reconstruct, after the fact, which users triggered the agent
+  and roughly what it suggested.
+- Logs are retained for 90 days per the general logging retention policy.
+
+KNOWN GAP — TAMPER EVIDENCE
+These logs are stored in the same mutable log store as all other
+application logs. An engineer or admin with log-store write access could
+alter or delete an entry without detection; there is no hash-chaining,
+write-once storage, or independent integrity verification specific to
+agent-generated records. This means that in a dispute over what the
+agent actually suggested or why, we could not cryptographically prove
+the log entry we show is the original, unaltered one.
+
+This matters more for agent-generated records than for general app logs,
+since agent outputs increasingly feed into records that downstream
+parties (customers, and potentially compliance/audit reviewers) rely on
+as accurate. Tamper-evidence for these specific records has been raised
+as a priority by leadership but is not yet scoped or implemented.
+Tracked as JIRA-4515.
+
+KNOWN GAP — NAMED OWNERSHIP AND FAILURE RESPONSE
+There is currently no formally documented owner for reviewing disputed
+or incorrect agent outputs, and no written failure-response process
+(e.g., what happens when a customer flags that a suggested field value
+was wrong). In practice, issues are routed ad hoc to whichever engineer
+is on call, but this is not written down anywhere.

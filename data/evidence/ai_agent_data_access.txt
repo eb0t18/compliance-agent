@@ -1,0 +1,31 @@
+AI AGENT DATA ACCESS DESIGN NOTE — Forms Auto-Fill Agent v0.3
+Author: ML Platform Team | Last updated: 2026-09-05
+
+OVERVIEW
+The forms auto-fill agent assists users by suggesting field completions based
+on prior form submissions and org-level templates. This is a vertical AI
+agent operating inside a regulated workflow: its suggested completions
+frequently populate fields on forms that feed downstream compliance,
+underwriting, or audit records that other parties (customers, reviewers,
+sometimes third-party institutions) rely on as accurate. A hallucinated or
+mishandled field value here is not a cosmetic error — it can propagate into
+a record someone else treats as ground truth.
+
+DATA ACCESS SCOPE
+- The agent is granted read access to the requesting user's own prior
+  submissions and their organization's shared templates only.
+- Data access is scoped via a per-session token issued at agent invocation,
+  tied to the authenticated user's tenant ID.
+- Cross-tenant queries are blocked at the data access layer (row-level
+  security enforced in Postgres via tenant_id predicate).
+
+KNOWN LIMITATIONS
+- The agent's context window currently includes up to 20 prior submissions
+  for relevance ranking; there is no automated redaction step before this
+  data is included in the prompt sent to the underlying model provider.
+- No dedicated PII-detection/redaction filter is applied to agent inputs or
+  outputs at this time. This has been flagged by the security team
+  (JIRA-4498) but is not yet implemented.
+- Credential/API key scrubbing from agent outputs is not currently
+  implemented; the agent does not have tool access to systems that would
+  return credentials, so risk is assessed as low but unmitigated.

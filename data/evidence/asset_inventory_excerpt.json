@@ -1,0 +1,13 @@
+{
+  "inventory_export_date": "2026-08-15",
+  "system_owner_field": "populated_for_all_assets",
+  "assets": [
+    {"name": "Production PostgreSQL cluster", "owner": "Data Platform Team", "classification": "Confidential"},
+    {"name": "Customer form-submission storage (S3)", "owner": "Data Platform Team", "classification": "Confidential"},
+    {"name": "Forms auto-fill AI agent (v0.3)", "owner": "ML Platform Team", "classification": "Confidential"},
+    {"name": "Internal support tooling", "owner": "Support Eng", "classification": "Internal"},
+    {"name": "Marketing website CMS", "owner": "Marketing", "classification": "Public"}
+  ],
+  "last_full_review": "2026-08-15",
+  "review_cadence": "quarterly"
+}

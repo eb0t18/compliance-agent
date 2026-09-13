@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compliance Readiness Report — FormFlow Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F6F2;
+    --ink: #20242B;
+    --ink-soft: #55606B;
+    --hairline: #D9D5CC;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+  }
+  .masthead h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .masthead .subtitle {
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .stamp {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 2.5px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+  .stamp .pct {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stamp .label {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .summary-bar {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .summary-legend {
+    display: flex;
+    gap: 18px;
+    margin: 10px 0 40px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .summary-legend i {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .framework-section {
+    margin-bottom: 36px;
+  }
+  .framework-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1.5px solid var(--fw-accent);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .framework-header h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--fw-accent);
+    margin: 0;
+  }
+  .framework-count {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .control-row {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .control-row summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 2px;
+    cursor: pointer;
+  }
+  .control-row summary::-webkit-details-marker { display: none; }
+  .control-row summary::before {
+    content: '›';
+    display: inline-block;
+    font-size: 16px;
+    color: var(--ink-soft);
+    transition: transform 0.15s ease;
+    width: 10px;
+  }
+  .control-row[open] summary::before {
+    transform: rotate(90deg);
+  }
+  .control-id {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    width: 130px;
+    flex-shrink: 0;
+  }
+  .control-name {
+    flex: 1;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+  .status-pill {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--pill-color);
+    border: 1.3px solid var(--pill-color);
+    border-radius: 20px;
+    padding: 2px 10px;
+    flex-shrink: 0;
+  }
+  .control-detail {
+    padding: 0 2px 18px 24px;
+  }
+  .control-detail .requirement {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .control-detail .rationale {
+    font-size: 14px;
+    margin: 0 0 12px;
+  }
+  .evidence-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ev-tag {
+    font-size: 11.5px;
+    background: #EEECE5;
+    border-radius: 4px;
+    padding: 3px 8px;
+    color: var(--ink-soft);
+  }
+  .ev-none {
+    background: transparent;
+    border: 1px dashed var(--hairline);
+    font-style: italic;
+  }
+  .footnote {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div>
+      <h1>Compliance Readiness Report</h1>
+      <div class="subtitle">FormFlow Inc. — generated September 13, 2026</div>
+    </div>
+    <div class="stamp">
+      <div class="pct">32%</div>
+      <div class="label">READY</div>
+    </div>
+  </div>
+
+  
+    <div class="summary-bar"><div class="seg" style="width:5.88235294117647%; background:#2E6F4E" title="Met: 1"></div><div class="seg" style="width:52.94117647058824%; background:#A6790A" title="Partial: 9"></div><div class="seg" style="width:41.17647058823529%; background:#9C3B2E" title="Gap: 7"></div></div>
+    <div class="summary-legend"><span class="legend-item"><i style="background:#2E6F4E"></i>Met (1)</span><span class="legend-item"><i style="background:#A6790A"></i>Partial (9)</span><span class="legend-item"><i style="background:#9C3B2E"></i>Gap (7)</span></div>
+    
+
+  
+    <section class="framework-section" style="--fw-accent:#435672">
+      <div class="framework-header">
+        <h2>SOC 2</h2>
+        <span class="framework-count">1 / 5 met</span>
+      </div>
+      
+    <details class="control-row">
+      <summary>
+        <span class="control-id">SOC2-CC6.1</span>
+        <span class="control-name">Logical Access Controls</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The entity implements logical access security software, infrastructure, and architectures over protected information assets to protect them from security events to meet the entity's objectives.</p>
+        <p class="rationale">FormFlow implements core logical access controls (SSO via Okta, RBAC, MFA, access reviews, timely termination procedures) documented in access_policy.txt and mfa_config.json. However, multiple known gaps exist in monitoring and integrity controls for protected information assets: the AI agent subsystem lacks security monitoring integration (monitoring_log_excerpt.txt, JIRA-4502), agent activity logs lack tamper-evidence protections (agent_activity_logging.txt, JIRA-4515), PII redaction is not implemented (ai_agent_data_access.txt, JIRA-4498), and a critical production change (CHG-1191) lacks documented approval and proper testing before deployment. These gaps collectively prevent full satisfaction of the requirement to protect information assets from security events.</p>
+        <div class="evidence-list"><span class="ev-tag">access_policy.txt</span><span class="ev-tag">mfa_config.json</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">monitoring_log_excerpt.txt</span><span class="ev-tag">change_management_log.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">SOC2-CC6.6</span>
+        <span class="control-name">Multi-Factor Authentication</span>
+        <span class="status-pill" style="--pill-color:#2E6F4E">Met</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The entity implements logical access security measures to protect against threats from sources outside its system boundaries, including multi-factor authentication for privileged and remote access.</p>
+        <p class="rationale">The mfa_config.json file directly demonstrates that multi-factor authentication is required for both admin accounts and remote access (VPN), with multiple factor types enabled (push notification, TOTP, webauthn). The access_policy.txt file confirms that all employee access is provisioned through Okta SSO with role-based access control and manager approval workflows, establishing the logical access security framework. Legacy authentication protocols are disabled, further hardening the environment against external threats.</p>
+        <div class="evidence-list"><span class="ev-tag">mfa_config.json</span><span class="ev-tag">access_policy.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">SOC2-CC7.2</span>
+        <span class="control-name">System Monitoring</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The entity monitors system components and the operation of controls to detect anomalies indicative of malicious acts, natural disasters, or errors affecting the entity's ability to meet its objectives.</p>
+        <p class="rationale">FormFlow has implemented general system monitoring (Splunk) with alert detection and response procedures documented in monitoring_log_excerpt.txt, covering production AWS and core application services. However, the same file explicitly documents that the newly launched AI agent subsystem (forms auto-fill agent) is NOT yet integrated into monitoring (JIRA-4502, targeted Q4). Additionally, agent_activity_logging.txt identifies known gaps in tamper-evidence controls and lack of documented ownership/failure response for agent anomalies. These gaps prevent comprehensive anomaly detection across all system components, particularly for a production agent generating compliance-relevant outputs.</p>
+        <div class="evidence-list"><span class="ev-tag">monitoring_log_excerpt.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">ai_agent_data_access.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">SOC2-CC8.1</span>
+        <span class="control-name">Change Management</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes to infrastructure, data, software, and procedures to meet its objectives.</p>
+        <p class="rationale">FormFlow has established change management processes documented in change_management_log.txt with authorization, testing, approval, and rollback planning for most changes. However, CHG-1191 (Forms auto-fill AI agent v0.3 deployment) explicitly lacks approval sign-off, documented rollback plan, and formal staging QA testing, demonstrating inconsistent application of the control. Additionally, ai_agent_data_access.txt and agent_activity_logging.txt document known gaps in design, configuration, and testing rigor for a critical system change, indicating the entity has not fully met the 'designs, develops, configures, documents, tests, approves' requirement across all infrastructure and procedures.</p>
+        <div class="evidence-list"><span class="ev-tag">change_management_log.txt</span><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">SOC2-A1.2</span>
+        <span class="control-name">Backup and Recovery</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The entity authorizes, designs, develops, or acquires, implements, operates, approves, maintains, and monitors environmental protections, backup processes, and recovery infrastructure to meet its availability commitments.</p>
+        <p class="rationale">The provided evidence contains no documentation of backup processes, recovery infrastructure, recovery testing, availability commitments, or recovery time objectives (RTO)/recovery point objectives (RPO). While asset_inventory_excerpt.json identifies critical assets (PostgreSQL cluster, S3 storage) with system owners, and monitoring_log_excerpt.txt shows operational monitoring, neither file addresses backup design, implementation, approval, maintenance, or recovery capability verification required by SOC 2 A1.2. The control explicitly requires evidence of authorization, design, implementation, operation, approval, maintenance, and monitoring of backup and recovery infrastructure to meet availability commitments; no such evidence is present.</p>
+        <div class="evidence-list"><span class="ev-tag">asset_inventory_excerpt.json</span><span class="ev-tag">monitoring_log_excerpt.txt</span></div>
+      </div>
+    </details>
+    
+    </section>
+    
+    <section class="framework-section" style="--fw-accent:#6B7550">
+      <div class="framework-header">
+        <h2>ISO 27001</h2>
+        <span class="framework-count">0 / 5 met</span>
+      </div>
+      
+    <details class="control-row">
+      <summary>
+        <span class="control-id">ISO27001-A.5.15</span>
+        <span class="control-name">Access Control</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Rules to control physical and logical access to information and other associated assets shall be established and implemented based on business and information security requirements.</p>
+        <p class="rationale">The access_policy.txt demonstrates established rules for logical access (SSO, RBAC, provisioning, review, termination) and physical access (badge control, visitor logs) with documented procedures. However, multiple evidence files reveal material gaps in implementation and monitoring: the ai_agent_data_access.txt and agent_activity_logging.txt documents identify that the forms auto-fill agent (a Confidential-classified asset per asset_inventory_excerpt.json) operates without dedicated access controls (no PII redaction, no tamper-evident logging), lacks formal ownership and failure response procedures, and is not integrated into security monitoring per monitoring_log_excerpt.txt (JIRA-4502). Additionally, CHG-1191 shows a production AI agent deployment pending approval without staging QA sign-off, indicating control gaps in change governance for this access-relevant system. The policy framework exists but does not comprehensively govern or monitor access to all information assets in scope.</p>
+        <div class="evidence-list"><span class="ev-tag">access_policy.txt</span><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">asset_inventory_excerpt.json</span><span class="ev-tag">change_management_log.txt</span><span class="ev-tag">monitoring_log_excerpt.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">ISO27001-A.8.9</span>
+        <span class="control-name">Configuration Management</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Configurations, including security configurations, of hardware, software, services, and networks shall be established, documented, implemented, monitored, and reviewed.</p>
+        <p class="rationale">FormFlow has established configuration management processes for core infrastructure (asset inventory, change management, access control, MFA) with documented owners, review cadences, and approval workflows. However, critical gaps exist: CHG-1191 (AI agent v0.3 deployment) lacks approval sign-off and documented rollback plan; the AI agent subsystem is not integrated into security monitoring (JIRA-4502); and the agent's configuration—including data access scope and prompt parameters—lacks formal documented review procedures distinct from general change control. These gaps mean configurations for a high-risk system are not fully established, monitored, or reviewed per the control requirement.</p>
+        <div class="evidence-list"><span class="ev-tag">asset_inventory_excerpt.json</span><span class="ev-tag">change_management_log.txt</span><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">monitoring_log_excerpt.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">ISO27001-A.5.24</span>
+        <span class="control-name">Incident Management Planning</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> The organization shall plan and prepare for managing information security incidents by defining, establishing, and communicating information security incident management processes, roles, and responsibilities.</p>
+        <p class="rationale">No evidence file documents incident management processes, roles, responsibilities, or incident response planning. The organization has monitoring and logging capabilities (monitoring_log_excerpt.txt, agent_activity_logging.txt), but these support detection only; none of the provided evidence establishes defined incident management processes, communication plans, assigned incident response roles, or preparation/planning artifacts required by ISO 27001-A.5.24. The access_policy.txt, change_management_log.txt, and asset_inventory_excerpt.json address other security domains but do not constitute incident management planning.</p>
+        <div class="evidence-list"><span class="ev-tag">monitoring_log_excerpt.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">access_policy.txt</span><span class="ev-tag">change_management_log.txt</span><span class="ev-tag">asset_inventory_excerpt.json</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">ISO27001-A.8.16</span>
+        <span class="control-name">Monitoring Activities</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Networks, systems, and applications shall be monitored for anomalous behavior and potential information security incidents shall be evaluated.</p>
+        <p class="rationale">monitoring_log_excerpt.txt demonstrates active security monitoring with alert detection and escalation for production AWS environment and core application services, meeting the core monitoring requirement. However, the same file explicitly documents that the forms auto-fill AI agent subsystem (classified as Confidential in asset_inventory_excerpt.json) is NOT yet integrated into monitoring, tracked as JIRA-4502. Additionally, agent_activity_logging.txt reveals that AI agent activity logging lacks tamper-evidence controls and has no documented owner or failure-response process for disputed outputs, creating gaps in the anomalous behavior evaluation and incident response aspects of the control.</p>
+        <div class="evidence-list"><span class="ev-tag">monitoring_log_excerpt.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">asset_inventory_excerpt.json</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">ISO27001-A.5.9</span>
+        <span class="control-name">Inventory of Information and Assets</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> An inventory of information and other associated assets, including owners, shall be developed and maintained.</p>
+        <p class="rationale">asset_inventory_excerpt.json demonstrates that FormFlow maintains an inventory of information assets with documented owners and a quarterly review cadence, satisfying the core requirement. However, the inventory is incomplete: the forms auto-fill AI agent is listed as an asset, but the supporting design documents (ai_agent_data_access.txt, agent_activity_logging.txt) reveal that associated information assets generated or processed by this agent (e.g., agent-generated field suggestions, agent activity logs, PII in agent context windows) lack formal ownership designation and documented information handling procedures, creating gaps in the completeness and maintenance of the asset inventory as required by ISO 27001:A.5.9.</p>
+        <div class="evidence-list"><span class="ev-tag">asset_inventory_excerpt.json</span><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    </section>
+    
+    <section class="framework-section" style="--fw-accent:#6E4A6E">
+      <div class="framework-header">
+        <h2>AIUC-1</h2>
+        <span class="framework-count">0 / 7 met</span>
+      </div>
+      
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-A001</span>
+        <span class="control-name">Establish Input Data Policy</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Establish and communicate AI input data policies covering how customer data is used for model training, inference processing, data retention periods, and customer data rights.</p>
+        <p class="rationale">No evidence file documents an established and communicated AI input data policy covering model training use, inference processing, data retention periods, or customer data rights. While ai_agent_data_access.txt describes current data access scoping and known limitations, it is a technical design note, not a formal policy. The access_policy.txt, agent_activity_logging.txt, and other files address related controls (access management, logging) but do not satisfy the specific requirement to establish and communicate a comprehensive input data policy governing how customer data is used for AI model training, inference, retention, and customer rights.</p>
+        <div class="evidence-list"><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">access_policy.txt</span><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-A003</span>
+        <span class="control-name">Limit AI Agent Data Access</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Implement safeguards to limit AI agent data access based on task, user role, agent role and context.</p>
+        <p class="rationale">The ai_agent_data_access.txt file demonstrates that task-based, user-role, and context-based access controls are implemented (read access scoped to user's own prior submissions and org templates, enforced via per-session tokens and row-level security). However, the same file explicitly documents known limitations: no automated PII redaction before context inclusion in prompts, and no credential scrubbing from outputs. These gaps mean safeguards are incomplete. Additionally, access_policy.txt covers general employee access controls but does not address AI agent-specific data access governance, and agent activity logging does not capture granular details of what data the agent accessed during each invocation.</p>
+        <div class="evidence-list"><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">access_policy.txt</span><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-A005</span>
+        <span class="control-name">Prevent Cross-Customer Data Exposure</span>
+        <span class="status-pill" style="--pill-color:#A6790A">Partial</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Implement safeguards to prevent cross-customer data exposure.</p>
+        <p class="rationale">FormFlow has implemented foundational cross-tenant data isolation via row-level security and per-session tokens scoped to tenant ID (ai_agent_data_access.txt), and access controls follow least-privilege principles with RBAC and quarterly reviews (access_policy.txt). However, multiple documented gaps directly undermine the effectiveness of these safeguards: the AI agent lacks automated PII redaction before including up to 20 prior submissions in prompts (ai_agent_data_access.txt, JIRA-4498); agent activity logs are stored in mutable, non-tamper-evident storage vulnerable to alteration by privileged users (agent_activity_logging.txt, JIRA-4515); and security monitoring for the AI agent subsystem is not yet integrated, creating a blind spot for detecting cross-customer exposure incidents (monitoring_log_excerpt.txt, JIRA-4502). These gaps mean that while the architectural layer prevents unauthorized logical access, compensating controls for PII handling, audit integrity, and detection are incomplete.</p>
+        <div class="evidence-list"><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">access_policy.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">monitoring_log_excerpt.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-A006</span>
+        <span class="control-name">Prevent PII Leakage</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Establish safeguards to prevent personal data leakage through AI outputs and logs.</p>
+        <p class="rationale">Evidence documents multiple known gaps directly preventing PII leakage safeguards: (1) ai_agent_data_access.txt explicitly states 'no automated redaction step' and 'no dedicated PII-detection/redaction filter is applied to agent inputs or outputs'; (2) agent_activity_logging.txt confirms logs lack tamper-evidence controls and capture agent outputs without redaction; (3) monitoring_log_excerpt.txt confirms AI agent subsystem monitoring is NOT integrated into security monitoring (JIRA-4502). These are not future roadmap items but actively documented gaps in current production deployment of the forms auto-fill agent handling sensitive form data.</p>
+        <div class="evidence-list"><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">monitoring_log_excerpt.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-A008</span>
+        <span class="control-name">Prevent Leakage of Credentials and Secrets</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Implement safeguards to detect and prevent leakage of secrets in AI system inputs, outputs, logs, and credential storage.</p>
+        <p class="rationale">The control requires safeguards to detect and prevent leakage of secrets in AI system inputs, outputs, logs, and credential storage. Evidence from ai_agent_data_access.txt explicitly documents that no PII-detection/redaction filter is applied to agent inputs or outputs, and credential/API key scrubbing from agent outputs is not implemented. Agent activity logging (agent_activity_logging.txt) shows logs are stored in mutable storage without tamper evidence and includes no mention of secret detection or redaction mechanisms. No evidence across provided files demonstrates detection or prevention controls for credential leakage specific to the forms auto-fill AI agent or any other AI system.</p>
+        <div class="evidence-list"><span class="ev-tag">ai_agent_data_access.txt</span><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-E015</span>
+        <span class="control-name">Log AI System Activity</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Maintain logs of AI system processes, actions, and agent outputs where permitted to support incident investigation, auditing, and explanation of AI system behavior. Implement technical controls to ensure logs are tamper-evident and independently verifiable, such that captured records cannot be modified or deleted after creation and gaps, omissions, or reordering are detectable during incident investigation or audit.</p>
+        <p class="rationale">The agent_activity_logging.txt file explicitly documents two critical gaps that directly prevent satisfaction of this control: (1) logs are stored in mutable storage with no hash-chaining, write-once storage, or cryptographic integrity verification, meaning tamper-evidence cannot be proven; (2) there is no formally documented owner or failure-response process for disputed agent outputs. The design note acknowledges that tamper-evidence for agent records is a known priority (JIRA-4515) but explicitly states it is 'not yet scoped or implemented.' These gaps mean the control requirement for tamper-evident and independently verifiable logs cannot be met.</p>
+        <div class="evidence-list"><span class="ev-tag">agent_activity_logging.txt</span></div>
+      </div>
+    </details>
+    
+    <details class="control-row">
+      <summary>
+        <span class="control-id">AIUC1-E004</span>
+        <span class="control-name">Assign Accountability</span>
+        <span class="status-pill" style="--pill-color:#9C3B2E">Gap</span>
+      </summary>
+      <div class="control-detail">
+        <p class="requirement"><strong>Requirement:</strong> Document which AI system changes across the development and deployment lifecycle require formal review or approval, assign a lead accountable for each, and document their approval with supporting evidence.</p>
+        <p class="rationale">While asset_inventory_excerpt.json and change_management_log.txt show that the Forms auto-fill AI agent has an assigned owner (ML Platform Team) and that one agent change (CHG-1191) was submitted for review, the control requirement demands documentation of WHICH changes require formal review/approval and NAMED accountability with supporting evidence of approval. CHG-1191 shows the approval is PENDING with no documented approver, and no evidence file systematically documents which AI system changes across the development lifecycle require formal review versus which do not. The agent_activity_logging.txt and ai_agent_data_access.txt files document known gaps in accountability (no formally documented owner for disputed outputs, no written failure-response process), indicating accountability structures are incomplete and not systematized across the full lifecycle.</p>
+        <div class="evidence-list"><span class="ev-tag">change_management_log.txt</span><span class="ev-tag">asset_inventory_excerpt.json</span><span class="ev-tag">agent_activity_logging.txt</span><span class="ev-tag">ai_agent_data_access.txt</span></div>
+      </div>
+    </details>
+    
+    </section>
+    
+
+  <div class="footnote">
+    Generated by an evidence-mapping proof-of-concept. Findings are model-generated
+    from a limited evidence set and are not a substitute for review by an
+    accredited auditor. Frameworks referenced: SOC 2 (AICPA), ISO/IEC 27001:2022,
+    and AIUC-1.
+  </div>
+</div>
+</body>
+</html>

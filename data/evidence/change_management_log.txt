@@ -1,0 +1,22 @@
+CHANGE MANAGEMENT LOG — Excerpt (Last 5 Production Changes)
+
+CHG-1188 | 2026-08-20 | Deploy: Updated form-parsing validation rules
+  Requested by: J. Alvarez (Eng) | Approved by: M. Chen (Eng Manager)
+  Testing: Unit + staging QA pass attached | Rollback plan: documented
+
+CHG-1189 | 2026-08-25 | Deploy: New customer onboarding flow v2
+  Requested by: T. Osei (Eng) | Approved by: M. Chen (Eng Manager)
+  Testing: Staging QA pass attached | Rollback plan: documented
+
+CHG-1190 | 2026-09-06 | Config: New admin role assignment (support-tier-2)
+  Requested by: R. Patel (IT) | Approved by: CISO
+  Testing: N/A (access config) | Rollback plan: revoke role
+
+CHG-1191 | 2026-09-08 | Deploy: Forms auto-fill AI agent v0.3 (prompt update)
+  Requested by: K. Sato (ML Eng) | Approved by: — PENDING —
+  Testing: Ad-hoc manual testing only, no staging QA sign-off on file
+  Rollback plan: not documented
+
+CHG-1192 | 2026-09-10 | Deploy: Database index optimization
+  Requested by: J. Alvarez (Eng) | Approved by: M. Chen (Eng Manager)
+  Testing: Staging QA pass attached | Rollback plan: documented

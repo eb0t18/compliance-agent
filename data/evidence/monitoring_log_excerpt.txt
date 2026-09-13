@@ -1,0 +1,23 @@
+SECURITY MONITORING SUMMARY — Weekly Export
+Source: Splunk Cloud | Period: 2026-09-01 to 2026-09-07
+
+Total events ingested: 4,812,003
+Alerts triggered: 14
+Alerts escalated to on-call: 3
+Mean time to acknowledge (MTTA): 11 minutes
+Mean time to resolve (MTTR): 2.4 hours
+
+Notable events:
+- 09/03 02:14 UTC — Repeated failed login attempts (11x) from single IP against
+  admin console; account auto-locked after 5th attempt per policy; IP blocked
+  at WAF layer.
+- 09/05 14:02 UTC — Anomalous data export volume flagged for customer support
+  tooling; reviewed by on-call engineer, determined to be legitimate bulk
+  export requested by customer via support ticket #8823.
+- 09/06 09:40 UTC — New admin role assignment detected; verified against
+  change ticket CHG-1190, no action required.
+
+Coverage note: Monitoring currently covers production AWS environment and
+core application services. Coverage for the newly launched AI agent
+subsystem (forms auto-fill agent) is NOT yet integrated into Splunk;
+tracked as a gap in JIRA-4502, targeted for Q4.

@@ -1,0 +1,16 @@
+{
+  "system": "Okta Identity Provider",
+  "export_date": "2026-09-01",
+  "mfa_enforcement": {
+    "admin_accounts": "required",
+    "standard_employee_accounts": "required",
+    "service_accounts": "not_enforced",
+    "remote_access_vpn": "required"
+  },
+  "mfa_factors_enabled": ["push_notification", "totp", "webauthn"],
+  "legacy_auth_protocols": {
+    "basic_auth": "disabled",
+    "pop3_imap": "disabled"
+  },
+  "notes": "Service account MFA exemption approved by CISO on 2025-11-12 pending migration to workload identity federation, tracked in JIRA-4471."
+}

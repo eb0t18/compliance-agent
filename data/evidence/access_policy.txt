@@ -1,0 +1,24 @@
+ACCESS CONTROL POLICY — FormFlow Inc.
+Effective Date: January 2026 | Owner: IT Security Team
+
+1. PURPOSE
+This policy governs logical and physical access to FormFlow's information systems,
+including production infrastructure, customer data stores, and internal tooling.
+
+2. ACCESS PROVISIONING
+All employee access is provisioned via Okta SSO, following the principle of least
+privilege. Access requests require manager approval and are logged in the IT
+service desk ticketing system. Role-based access control (RBAC) is enforced for
+all production systems, with distinct roles for Engineering, Support, and Admin.
+
+3. ACCESS REVIEW
+Access entitlements are reviewed quarterly by system owners. Any accounts inactive
+for more than 90 days are automatically disabled and flagged for manager review.
+
+4. TERMINATION
+Upon employee termination, IT Security revokes all system access within 4 business
+hours of notification from HR, per the offboarding checklist.
+
+5. PHYSICAL ACCESS
+Office access is controlled via badge entry system; visitor logs are maintained
+and reviewed monthly by the Office Operations team.
