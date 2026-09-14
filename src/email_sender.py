@@ -34,13 +34,9 @@ def send_report_email(to_address, html_content, subject="Compliance Readiness Re
     msg["From"] = gmail_address
     msg["To"] = to_address
     msg.set_content(
-        "Hello, \n\n"
-        "Attached is a compliance readiness report evaluating current evidence "
-        "against controls from SOC 2, ISO 27001, and AIUC-1.\n\n"
-        "Open the attached HTML file in a web browser to view the full "
-        "interactive report. \n\n"
-        "Best regards,\n"
-        "The Compliance Team"
+        "Your compliance readiness report is attached as an HTML file.\n\n"
+        "Open the attachment in a web browser to view the full interactive "
+        "report, including expandable rationale for each control."
     )
     msg.add_attachment(
         html_content.encode("utf-8"),

@@ -104,6 +104,47 @@ anyone who can reach this URL on your machine could trigger a send. That's
 fine for a local demo on your own laptop; don't deploy this as-is to a
 public server.
 
+## Scheduled weekly runs (Windows Task Scheduler)
+
+`src/run_pipeline.py` chains the full workflow — evaluate → regenerate
+report → email stakeholders — into one command, meant to be triggered
+automatically on a recurring cadence rather than run by hand.
+
+**Before scheduling it:**
+1. Edit `STAKEHOLDER_EMAILS` in `run_pipeline.py` with real recipient(s).
+2. A Scheduled Task does **not** inherit a terminal's temporary `$env:`
+   variables — set `ANTHROPIC_API_KEY`, `GMAIL_ADDRESS`, and
+   `GMAIL_APP_PASSWORD` as **permanent** user environment variables
+   instead (Windows Settings → System → About → Advanced system settings
+   → Environment Variables → New, under "User variables"), or the
+   scheduled run will fail with the same "not set" error you'd see if you
+   forgot to set them in a fresh terminal.
+3. Test it manually first: `python src/run_pipeline.py` — confirm it
+   evaluates, regenerates the report, and sends email successfully before
+   scheduling it.
+
+**Creating the task (demo-safe — run on demand, not auto-triggered):**
+```powershell
+schtasks /create /tn "ComplianceAgentWeekly" /tr "python C:\full\path\to\compliance-agent\src\run_pipeline.py" /sc weekly /d MON /st 08:00
+```
+This creates a task named `ComplianceAgentWeekly` set to run Mondays at
+8:00 AM. For a demo, you likely don't want it silently firing on a real
+schedule — two safer options:
+- After creating it, open **Task Scheduler** (search it in the Start
+  menu) → find the task → right-click → **Run** to trigger it on demand,
+  whenever you want to show it working, without waiting for Monday.
+- Or omit `/sc weekly /d MON /st 08:00` and use `/sc once /st 00:00` with
+  a past time — this creates the task in a disabled/non-firing state
+  that you still trigger manually via the same right-click → Run.
+
+**Removing it — one command, fully reversible:**
+```powershell
+schtasks /delete /tn "ComplianceAgentWeekly" /f
+```
+This deletes the task definition entirely; nothing else on your system
+is touched. Safe to create and delete as many times as you want while
+you're figuring out the demo.
+
 ## Notes / limitations
 
 This is a proof-of-concept demonstrating the pattern, not a production audit

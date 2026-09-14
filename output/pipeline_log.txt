@@ -1,0 +1,7 @@
+[2026-09-13 22:31:21] Pipeline run started.
+[2026-09-13 22:31:33] ERROR during evaluation: HTTPSConnectionPool(host='api.anthropic.com', port=443): Max retries exceeded with url: /v1/messages (Caused by NameResolutionError("HTTPSConnection(host='api.anthropic.com', port=443): Failed to resolve 'api.anthropic.com' ([Errno 11001] getaddrinfo failed)"))
+[2026-09-13 22:32:45] Pipeline run started.
+[2026-09-13 22:33:44] Evidence evaluation complete.
+[2026-09-13 22:33:44] Report regenerated.
+[2026-09-13 22:33:47] Report emailed to superethan18@gmail.com.
+[2026-09-13 22:33:47] Pipeline run finished.
