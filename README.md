@@ -87,8 +87,8 @@ click send, and the report is emailed as an HTML attachment.
    as an environment variable, so your real password is never exposed.
 3. Set two more environment variables:
    ```
-   export GMAIL_ADDRESS="youraddress@gmail.com"
-   export GMAIL_APP_PASSWORD="xxxxxxxxxxxxxxxx"
+   $env GMAIL_ADDRESS="youraddress@gmail.com"
+   $env GMAIL_APP_PASSWORD="xxxxxxxxxxxxxxxx"
    ```
 
 **Run the server:**
