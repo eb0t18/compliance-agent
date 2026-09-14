@@ -33,25 +33,14 @@ def send_report_email(to_address, html_content, subject="Compliance Readiness Re
     msg["Subject"] = subject
     msg["From"] = gmail_address
     msg["To"] = to_address
-    msg.set_content
-    (
+    msg.set_content(
         "Hello, \n\n"
         "Attached is a compliance readiness report evaluating current evidence "
-        "against controls from SOC 2, ISO 27001, and AIUC-1 (the AI agent "
-        "security, safety, and accountability standard).\n\n"
+        "against controls from SOC 2, ISO 27001, and AIUC-1.\n\n"
         "Open the attached HTML file in a web browser to view the full "
-        "interactive report. It includes:\n\n"
-        "- An overall readiness score, plus a breakdown by framework\n"
-        "- Every control organized by domain, with a Met / Partial / Gap "
-        "status for each\n"
-        "- Click any control to expand it and see the specific evidence "
-        "reviewed and the rationale behind its status\n"
-        "- Particular attention to AIUC-1's Accountability domain (audit "
-        "logging, named ownership of AI system changes), given how directly "
-        "it relates to tamper-evident, auditable AI output\n\n"
-        "This report reflects a proof-of-concept evidence-mapping process, "
-        "not a substitute for a formal audit — findings are meant to "
-        "highlight where a deeper review would be most valuable."
+        "interactive report. \n\n"
+        "Best regards,\n"
+        "The Compliance Team"
     )
     msg.add_attachment(
         html_content.encode("utf-8"),
